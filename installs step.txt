@@ -1,0 +1,3 @@
+
+npm init -y
+Create src folder
