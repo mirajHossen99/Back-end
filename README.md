@@ -6,10 +6,13 @@
 npm init -y,
 npm install express,
 npm i nodemon --save-dev,
+npx prisma init,
+
 
 
 
 #### Folder stucture
 Create src folder,
 Create server.js file into src folder,
+
 
