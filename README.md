@@ -11,6 +11,10 @@ npm i prisma --save-dev,
 npm i @prisma/client,
 npm i dotenv,
 
+##### prisma migrate
+npx prisma migrate dev --name add users table
+npx prisma generate
+
 
 
 

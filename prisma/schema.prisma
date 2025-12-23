@@ -5,10 +5,50 @@
 // Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
 
 generator client {
-  provider = "prisma-client"
-  output   = "../src/generated/prisma"
+  provider = "prisma-client-js"
 }
 
 datasource db {
   provider = "postgresql"
 }
+
+model User {
+  id       String @id @default(uuid())
+  name     String
+  email    String @unique
+  password String
+
+  createdAt DateTime @default(now())
+}
+
+model Movie {
+  id          String   @id @default(uuid())
+  title       String
+  overview    String?
+  releaseYear Int
+  genres      String[] @default([])
+  runtime     Int?
+  posterUrl   String?
+  createdBy   String
+  createdAAt  DateTime @default(now())
+}
+
+model WatchListItem {
+  id String @id @default(uuid())
+  userId String
+  movieId String
+  status WatchListStatus @default(PLANNED)
+  rating Int?
+  notes String?
+  createAt DateTime @default(now())
+  updatedAt DateTime @default(now())
+}
+
+enum WatchListStatus {
+  PLANNED
+  WATCHING
+  COMPLETED
+  DROPPED
+}
+
+// USER -> MOVIE -> WATCHLIST
