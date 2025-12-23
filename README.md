@@ -13,6 +13,7 @@ npm i dotenv,
 
 ##### prisma migrate
 npx prisma migrate dev --name add users table
+npx prisma migrate dev --name added_others_tables
 npx prisma generate
 
 

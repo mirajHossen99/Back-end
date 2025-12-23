@@ -6,6 +6,7 @@
 
 generator client {
   provider = "prisma-client-js"
+  engineType = "library"
 }
 
 datasource db {
@@ -19,6 +20,10 @@ model User {
   password String
 
   createdAt DateTime @default(now())
+
+  // Relations
+  movies Movie[] @relation("MovieCreator")
+  watchListItems WatchListItem[]
 }
 
 model Movie {
@@ -31,17 +36,28 @@ model Movie {
   posterUrl   String?
   createdBy   String
   createdAAt  DateTime @default(now())
+
+  // Relation
+  creator User @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
+  watchListItems WatchListItem[]
+
+
 }
 
 model WatchListItem {
-  id String @id @default(uuid())
-  userId String
-  movieId String
-  status WatchListStatus @default(PLANNED)
-  rating Int?
-  notes String?
-  createAt DateTime @default(now())
-  updatedAt DateTime @default(now())
+  id        String          @id @default(uuid())
+  userId    String
+  movieId   String
+  status    WatchListStatus @default(PLANNED)
+  rating    Int?
+  notes     String?
+  createAt  DateTime        @default(now())
+  updatedAt DateTime        @default(now())
+
+
+  // Relations
+  user User @relation(fields: [userId], references: [id], onDelete:Cascade )
+  movie Movie @relation(fields: [movieId], references: [id], onDelete: Cascade)
 }
 
 enum WatchListStatus {
