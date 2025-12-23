@@ -5,7 +5,8 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "nodemon src/server.js"
+    "dev": "nodemon src/server.js",
+    "seed": "node prisma/seed.js"
   },
   "repository": {
     "type": "git",
@@ -29,6 +30,7 @@
     "@prisma/client": "^7.2.0",
     "bcryptjs": "^3.0.3",
     "dotenv": "^17.2.3",
+    "jsonwebtoken": "^9.0.3",
     "pg": "^8.16.3"
   }
 }

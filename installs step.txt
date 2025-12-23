@@ -8,6 +8,7 @@ npm i prisma --save-dev,
 npm i @prisma/client,
 npm i dotenv,
 npm i bcryptjs,
+npm i jsonwebtoken
 
 
 
@@ -25,3 +26,6 @@ Create server.js file into src folder,
 
 -------- Project run -------
 npm run dev
+
+------------ Generate random secret -------------
+openssl rand -base64 32
