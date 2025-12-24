@@ -26,6 +26,7 @@ Create server.js file into src folder,
 
 -------- Project run -------
 npm run dev
+npm run seed -> for movies added into server
 
 ------------ Generate random secret -------------
 openssl rand -base64 32
