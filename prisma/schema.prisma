@@ -35,7 +35,7 @@ model Movie {
   runtime     Int?
   posterUrl   String?
   createdBy   String
-  createdAAt  DateTime @default(now())
+  createdAt  DateTime @default(now())
 
   // Relation
   creator User @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)

@@ -59,7 +59,7 @@ const updateWatchlistItem = async (req, res) => {
   });
 
   if (!watchlistItem) {
-    return res.status(404).json({ error: "Watchlist item not fonund"})
+    return res.status(404).json({ error: "Watchlist item not found"})
   }
 
   // Ensure only owner can update
@@ -71,6 +71,7 @@ const updateWatchlistItem = async (req, res) => {
 
   // Build update data
   const updateData = {}
+  
   if (status !== undefined ) updateData.status = status.toUpperCase();
   if (rating !== undefined ) updateData.rating = rating;
   if (notes !== undefined ) updateData.notes = notes;
