@@ -10,13 +10,15 @@ npx prisma init,
 npm i prisma --save-dev,
 npm i @prisma/client,
 npm i dotenv,
+npm i bcryptjs,
+npm i jsonwebtoken,
+npm i zod
+
 
 ##### prisma migrate
 npx prisma migrate dev --name add users table
 npx prisma migrate dev --name added_others_tables
 npx prisma generate
-
-
 
 
 

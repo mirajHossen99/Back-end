@@ -8,7 +8,8 @@ npm i prisma --save-dev,
 npm i @prisma/client,
 npm i dotenv,
 npm i bcryptjs,
-npm i jsonwebtoken
+npm i jsonwebtoken,
+npm i zod
 
 
 
