@@ -19,7 +19,7 @@ const addToWatchlistSchema = z.object({
     .max(10, "Rating must be between 1 and 10")
     .optional(),
 
-  notes: z.string.optional(),
+  notes: z.string().optional(),
 });
 
 export { addToWatchlistSchema }
