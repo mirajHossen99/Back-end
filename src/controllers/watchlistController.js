@@ -71,7 +71,7 @@ const updateWatchlistItem = async (req, res) => {
 
   // Build update data
   const updateData = {}
-  
+
   if (status !== undefined ) updateData.status = status.toUpperCase();
   if (rating !== undefined ) updateData.rating = rating;
   if (notes !== undefined ) updateData.notes = notes;
@@ -109,7 +109,7 @@ const removeFromWatchlist = async (req, res) => {
   if (watchlistItem.userId !== req.user.id) {
     return res
       .status(403)
-      .json({ error: "Not allowed to update this watchlist item" });
+      .json({ error: "Not allowed to delete this watchlist item" });
   }
 
   await prisma.watchListItem.delete({

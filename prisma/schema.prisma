@@ -35,12 +35,11 @@ model Movie {
   runtime     Int?
   posterUrl   String?
   createdBy   String
-  createdAt  DateTime @default(now())
+  createdAt   DateTime @default(now())
 
   // Relation
   creator User @relation("MovieCreator", fields: [createdBy], references: [id], onDelete: Cascade)
   watchListItems WatchListItem[]
-
 
 }
 

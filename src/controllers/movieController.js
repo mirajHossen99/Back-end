@@ -1,4 +1,23 @@
-import { prisma } from "../config/db";
+import { prisma } from "../config/db.js";
+
+
+// ---------------- Read All Movie ----------
+
+const allMovies = async (req, res) => {
+
+    const movies = await prisma.movie.findMany()
+
+    if (!movies) {
+        return res.status(404).json({ error: "Movie not found"});
+    }
+
+    res.status(201).json({
+        status: "success",
+        data: {
+            movies,
+        }
+    })
+}
 
 // ----------------- Add movie --------------
 const addMovie = async (req, res) => {
@@ -84,6 +103,40 @@ const updateMovie = async (req, res) => {
     },
   });
 };
+
+
+// ---------------- Remove movie ---------------
+
+const removeMovie = async (req, res) => {
+
+    // Find movie and verify owership
+    const movie = await prisma.movie.findUnique({
+        where: { id: req.params.id }
+
+    });
+
+    if (!movie) {
+        return res.status(404).json({ error: "Movie not found"})
+    }
+
+    // Ensure only owner can delete
+    if (movie.createdBy !== req.user.id) {
+        return res
+          .status(403)
+          .json({ error: "Not allowed to delete this movie"})
+    }
+
+    await prisma.movie.delete({
+        where: { id: req.params.id },
+    });
+
+    res.status(200).json({
+        status: "success",
+        message: "Removed movie"
+    });
+}
+
+export { allMovies, addMovie, updateMovie, removeMovie };
 
 
 
