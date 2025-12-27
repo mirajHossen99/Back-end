@@ -35,9 +35,9 @@ app.get("/hello", (req, res) => {
 
 
 
-app.listen(PORT, () => {
+ const server = app.listen(PORT, () => {
     console.log(`Server running on PORT ${PORT}`)
-})
+});
 
 
 // Handle uncaught promise Rejections
