@@ -31,6 +31,8 @@ const addMovie = async (req, res) => {
     posterUrl,
   } = req.body;
 
+  const creatorId = req.user.id
+
   const movie = await prisma.movie.create({
     data: {
         title,
@@ -39,7 +41,8 @@ const addMovie = async (req, res) => {
         genres,
         runtime,
         posterUrl,
-        createBy: req.user.id
+        createdBy: creatorId,
+        
     }
   });
 

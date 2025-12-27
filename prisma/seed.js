@@ -8,11 +8,11 @@ const adapter = new PrismaPg({ connectionString })
 
 const prisma = new PrismaClient({adapter})
 
-const userId = "9ea4e474-a15d-4563-a865-e4f9b61cbd90";
+const userId = "16c0214c-9373-4770-9b51-907f5c3634e7";
 
 const movies = [
   {
-    title: "The Matrix",
+    title: "The Matrix 2",
     overview: "A computer hacker learns about the true nature of reality.",
     releaseYear: 1999,
     genres: ["Action", "Sci-Fi"],
@@ -21,7 +21,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "Inception",
+    title: "Inception 2",
     overview:
       "A thief who steals corporate secrets through dream-sharing technology.",
     releaseYear: 2010,
@@ -31,7 +31,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "The Dark Knight",
+    title: "The Dark Knight 2",
     overview: "Batman faces the Joker in a battle for Gotham's soul.",
     releaseYear: 2008,
     genres: ["Action", "Crime", "Drama"],
@@ -40,7 +40,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "Pulp Fiction",
+    title: "Pulp Fiction 2",
     overview: "The lives of two mob hitmen, a boxer, and others intertwine.",
     releaseYear: 1994,
     genres: ["Crime", "Drama"],
@@ -49,7 +49,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "Interstellar",
+    title: "Interstellar 2",
     overview: "A team of explorers travel through a wormhole in space.",
     releaseYear: 2014,
     genres: ["Adventure", "Drama", "Sci-Fi"],
@@ -58,7 +58,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "The Shawshank Redemption",
+    title: "The Shawshank Redemption 2",
     overview: "Two imprisoned men bond over a number of years.",
     releaseYear: 1994,
     genres: ["Drama"],
@@ -67,7 +67,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "Fight Club",
+    title: "Fight Club 2",
     overview:
       "An insomniac office worker and a devil-may-care soapmaker form an underground fight club.",
     releaseYear: 1999,
@@ -77,7 +77,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "Forrest Gump",
+    title: "Forrest Gump 2",
     overview:
       "The presidencies of Kennedy and Johnson unfold through the perspective of an Alabama man.",
     releaseYear: 1994,
@@ -87,7 +87,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "The Godfather",
+    title: "The Godfather 2",
     overview:
       "The aging patriarch of an organized crime dynasty transfers control to his son.",
     releaseYear: 1972,
@@ -97,7 +97,7 @@ const movies = [
     createdBy: userId,
   },
   {
-    title: "Goodfellas",
+    title: "Goodfellas 2",
     overview: "The story of Henry Hill and his life in the mob.",
     releaseYear: 1990,
     genres: ["Biography", "Crime", "Drama"],

@@ -26,9 +26,6 @@ app.use("/watchlist", watchlistRoutes)
 
 
 
-
-
-
 //-------------- Read data APIs ---------------
 
 app.get("/hello", (req, res) => {
