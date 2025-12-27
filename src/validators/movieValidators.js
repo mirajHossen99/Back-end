@@ -2,27 +2,13 @@ import { z } from "zod";
 
 const addMovieSchema = z.object({
   title: z.string(),
-  overview: z.string().optional(),
+  overview: z.string("Overwiew must be a string").optional(),
   releaseYear: z.number().int("Release year must be an integer"),
-  runtime: z.number().int(),
+  genres: z.array(z.string("Genres must be contain")),
+  runtime: z.number().int("It must be an integer").optional(),
+  posterUrl: z.string("Post url must be a string").optional(),
+  createdBy: z.string("Creator must be contain"),
 
-  status: z
-    .enum(["PLANNED", "WATCHING", "COMPLETED", "DROPPED"], {
-      error: () => ({
-        message:
-          "Status must be one of : PLANNED, WATCHING, COMPLETED, DROPPED",
-      }),
-    })
-    .optional(),
-
-  rating: z.coerce
-    .number()
-    .int("Rating must be an integer")
-    .min(1, "Rating must be between 1 and 10")
-    .max(10, "Rating must be between 1 and 10")
-    .optional(),
-
-  notes: z.string().optional(),
 });
 
 export { addMovieSchema }
