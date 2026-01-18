@@ -1,34 +1,142 @@
-# Back-end
+Since you are building a movie-tracking backend with **PostgreSQL** and **Prisma**, your documentation should highlight the database interaction and the validation layer (Zod).
 
-### Back-end with Node.js, Exprees.js, PostgreSQL, Prisma and Others
+Here is a structured `README.md` template you can use for your project.
 
-#### Install package
-npm init -y,
-npm install express,
-npm i nodemon --save-dev,
-npx prisma init,
-npm i prisma --save-dev,
-npm i @prisma/client,
-npm i dotenv,
-npm i bcryptjs,
-npm i jsonwebtoken,
-npm i zod
+---
+
+# 🎬 Movie Watchlist API
+
+A robust backend service for managing movie databases and personal user watchlists. Built with **Node.js**, **Express.js**, and **PostgreSQL** using **Prisma ORM**.
+
+## 🛠️ Tech Stack
+
+* **Runtime:** Node.js
+* **Framework:** Express.js
+* **Database:** PostgreSQL
+* **ORM:** Prisma
+* **Validation:** Zod
+* **Authentication:** JWT & Bcryptjs
+
+---
+
+## ⚙️ Installation & Setup
+
+1. **Clone the repository and install dependencies:**
+```bash
+npm install
+
+```
 
 
-##### prisma migrate
-npx prisma migrate dev --name add users table
-npx prisma migrate dev --name added_others_tables
+2. **Configure Environment Variables:**
+Create a `.env` file in the root directory:
+```env
+DATABASE_URL="postgresql://user:password@localhost:5432/movie_db?schema=public"
+JWT_SECRET="your_jwt_secret_key"
+PORT=5001
+
+```
+
+
+3. **Database Migration:**
+```bash
+npx prisma migrate dev --name init
 npx prisma generate
 
+```
 
 
-
-#### Folder stucture
-Create src folder,
-Create server.js file into src folder,
-
-
-#### Project run
+4. **Run the Project:**
+```bash
 npm run dev
 
+```
 
+
+
+---
+
+## 📡 API Documentation
+
+### 🔐 Authentication (`/auth`)
+
+| Method | Endpoint | Description | Validation |
+| --- | --- | --- | --- |
+| **POST** | `/auth/register` | Create a new user account | `registerSchema` |
+| **POST** | `/auth/login` | Authenticate user & get token | `loginSchema` |
+| **POST** | `/auth/logout` | Clear user session | None |
+
+### 🎥 Movie Management (`/movies`)
+
+*Requires Authentication Header: `Authorization: Bearer <token>*`
+
+| Method | Endpoint | Description | Validation |
+| --- | --- | --- | --- |
+| **GET** | `/movies` | Fetch all movies | None |
+| **POST** | `/movies` | Add a new movie to the DB | `createMovieSchema` |
+| **PUT** | `/movies/:id` | Update movie details | `updateMovieSchema` |
+| **DELETE** | `/movies/:id` | Remove a movie from the DB | None |
+
+### 📌 Watchlist (`/watchlist`)
+
+*Requires Authentication Header: `Authorization: Bearer <token>*`
+
+| Method | Endpoint | Description | Validation |
+| --- | --- | --- | --- |
+| **POST** | `/watchlist` | Add a movie to your personal list | `addToWatchlistSchema` |
+| **PUT** | `/watchlist/:id` | Update item status (e.g. watched) | None |
+| **DELETE** | `/watchlist/:id` | Remove from watchlist | None |
+
+---
+
+## 🧪 Testing Guide
+
+### 1. Request Structure
+
+All POST/PUT requests expect a JSON body. Example for **Adding a Movie**:
+
+```json
+{
+  "title": "Inception",
+  "genre": "Sci-Fi",
+  "releaseYear": 2010,
+  "director": "Christopher Nolan"
+}
+
+```
+
+### 2. Validation Errors
+
+If the data sent does not match the **Zod** schema, the API will return a `400 Bad Request` with a detailed error array:
+
+```json
+{
+  "status": "error",
+  "message": "Validation failed",
+  "errors": [
+    { "path": "releaseYear", "message": "Expected number, received string" }
+  ]
+}
+
+```
+
+### 3. Graceful Shutdown
+
+The server is configured to handle `SIGTERM` and `unhandledRejection`. It will automatically disconnect the Prisma client and close the database connection before exiting to prevent data corruption.
+
+---
+
+## 📂 Project Structure
+
+```text
+src/
+├── config/         # Database & Env configuration
+├── controllers/    # Request handlers
+├── middleware/     # Auth & Validation logic
+├── routes/         # API Route definitions
+├── validators/     # Zod schemas
+└── server.js       # Entry point
+
+```
+
+Would you like me to help you write the **Zod Schemas** or the **Prisma Schema** file to ensure the database matches these routes?
